@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>TikTok</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: black;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .tiktok-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .video-section {
+            flex-grow: 1;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" opacity="0.3"><rect width="100%" height="100%" fill="%23000"/><text x="50%" y="50%" text-anchor="middle" fill="white" font-size="20">Laden...</text></svg>') no-repeat center center;
+            background-size: cover;
+        }
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background-color: rgba(0,0,0,0.8);
+            border-top: 1px solid #333;
+        }
+        .nav-icon {
+            text-align: center;
+            color: white;
+            opacity: 0.7;
+        }
+        .nav-icon.active {
+            opacity: 1;
+        }
+        .open-app-btn {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FF0050;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="tiktok-container">
+        <div class="video-section"></div>
+        
+        <a href="#" class="open-app-btn" id="openAppBtn">Öffne TikTok</a>
+
+        <div class="bottom-nav">
+            <div class="nav-icon active">Home</div>
+            <div class="nav-icon">Entdecken</div>
+            <div class="nav-icon">Erstellen</div>
+            <div class="nav-icon">Posteingang</div>
+            <div class="nav-icon">Profil</div>
+        </div>
+    </div>
+
+    <script>
+        function redirectToTikTok() {
+            // Erkennung und Weiterleitung je nach Betriebssystem
+            const userAgent = navigator.userAgent.toLowerCase();
+            
+            if (/iphone|ipad|ipod/.test(userAgent)) {
+                window.location.href = 'https://apps.apple.com/app/tiktok/id1386412985';
+            } 
+            else if (/android/.test(userAgent)) {
+                window.location.href = 'https://play.google.com/store/apps/details?id=com.zhiliaoapp.musically';
+            } 
+            else {
+                alert('Bitte öffnen Sie TikTok auf einem mobilen Gerät');
+            }
+        }
+
+        document.getElementById('openAppBtn').addEventListener('click', redirectToTikTok);
+        
+        // Automatische Weiterleitung nach 3 Sekunden
+        setTimeout(redirectToTikTok, 3000);
+    </script>
+</body>
+</html>
